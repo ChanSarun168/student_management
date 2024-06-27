@@ -1,0 +1,25 @@
+{
+  "name": "student_management",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ChanSarun168/student_management.git",
+  "author": "Chan Sarun <chansarun0@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.ts"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.7.0",
+    "mongoose": "^8.4.4",
+    "nodemon": "^3.1.4",
+    "zod": "^3.23.8"
+  }
+}
