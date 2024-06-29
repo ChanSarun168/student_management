@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import studentschema from "../../schemas/student.schema";
 
 const StudentSchema = new mongoose.Schema({
     en_name : {type:String , required:true},

@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
-import z, { ZodError } from "zod";
+import z, { ZodError, ZodSchema } from "zod";
 import { BaseCustomError } from "../utils/customError";
 
 // Middleware function for validating user data using Zod schema
-export const validateUserData = (ValidatinSchema: z.ZodObject<any, any>) => {
+export const validateInputData = (ValidatinSchema: ZodSchema) => {
   return (req: Request, res: Response, next: NextFunction) => {
     try {
       ValidatinSchema.parse(req.body);

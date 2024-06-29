@@ -3,6 +3,9 @@ import { StudentController } from "../controllers/student.controller";
 import { BaseCustomError } from "../utils/customError";
 import { StatusCode } from "../utils/consts";
 import { IStudent } from "../databases/types/student.type";
+import parseDates from "../middlewares/parseDate";
+import { validateInputData } from "../middlewares/validateInput";
+import studentschema from "../schemas/student.schema";
 
 export const studentRoute = Router();
 const studentcontroller = new StudentController();
@@ -29,7 +32,7 @@ studentRoute.get("/" , async (req:Request,res:Response,next:NextFunction)=>{
 })
 
 // Create Student
-studentRoute.post("/" ,async (req:Request , res:Response, next:NextFunction)=>{
+studentRoute.post("/" , parseDates ,validateInputData(studentschema), async (req:Request , res:Response, next:NextFunction)=>{
     try{
         const {en_name , kh_name , dob , gender , phonenumber } = req.body
         const data:IStudent = {
