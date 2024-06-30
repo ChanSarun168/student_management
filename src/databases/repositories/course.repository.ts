@@ -91,7 +91,7 @@ export class courseRepository {
   // Get course Report
     async GetCourseReport() {
       try {
-        const courses = await CourseModel.find({ isdeleted: false }).lean();
+        const courses = await CourseModel.find({ isdeleted: false });
   
         if (courses.length === 0) {
           throw new BaseCustomError("No courses in our system", StatusCode.NoContent);

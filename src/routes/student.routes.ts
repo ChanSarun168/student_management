@@ -130,18 +130,20 @@ studentRoute.get("/report" ,async (req:Request , res:Response , next:NextFunctio
     }
 })
 
-// Get Student By id
-studentRoute.get("/:id",async (req:Request , res:Response , next:NextFunction)=>{
-    try{
-        const studentId = req.params.id;
-        //console.log("hi from get by id");
-        const student =  await studentcontroller.GetStudentById(studentId);
-        res.json({
-            status : "success",
-            message : "Student has been found !",
-            data : student
-        })
-    }catch(error:unknown | any){
-        next(error);
-    }
-})
+// // Get Student By id
+// studentRoute.get("/:id",async (req:Request , res:Response , next:NextFunction)=>{
+//     try{
+//         const studentId = req.params.id;
+//         console.log("hi from get by id");
+//         const student =  await studentcontroller.GetStudentById(studentId);
+//         res.json({
+//             status : "success",
+//             message : "Student has been found !",
+//             data : student
+//         })
+//     }catch(error:unknown | any){
+//         console.log("error: " , error.StatusCode);
+//         console.log("error:" , error)
+//         next(error);
+//     }
+// })
