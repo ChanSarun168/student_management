@@ -85,3 +85,17 @@ courseRoute.delete("/:id" , async (req:Request , res:Response , next:NextFunctio
         next(error);
     }
 })
+
+// Get Course Report
+courseRoute.get("/report" ,async (req:Request , res:Response , next:NextFunction)=>{
+    try{
+        const report = await coursecontroller.GetCourseReport();
+        res.json({
+            status: "success",
+            message: "Here the Course Report",
+            report:report
+        })
+    }catch(error:unknown | any){
+        next(error);
+    }
+})

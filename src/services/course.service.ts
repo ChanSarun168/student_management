@@ -45,4 +45,13 @@ export class courseService{
             throw error;
         }
     }
+
+    // Get Course Report
+    async GetCourseReport(){
+        try{
+            return await this.courseRepo.GetCourseReport();
+        }catch(error:unknown | any){
+            throw error;
+        }
+    }
 }

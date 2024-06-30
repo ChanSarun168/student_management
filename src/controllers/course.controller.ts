@@ -36,9 +36,18 @@ export class CourseController{
     }
 
     // Delete Course
-    async DeleteCourse(id:string){
+    async DeleteCourse(id:string):Promise<any>{
         try{
             return await this.courseservice.DeleteCourse(id);
+        }catch(error:unknown | any){
+            throw error;
+        }
+    }
+
+    // Get Course Report
+    async GetCourseReport():Promise<any>{
+        try{
+            return await this.courseservice.GetCourseReport();
         }catch(error:unknown | any){
             throw error;
         }

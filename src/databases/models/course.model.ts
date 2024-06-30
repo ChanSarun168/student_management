@@ -3,10 +3,10 @@ import mongoose from "mongoose";
 const CourseSchema = new mongoose.Schema({
     name: {type:String , required:true},
     professor_name : {type:String , required:true},
-    limit_student : {type:String , required:true},
+    limit_student : {type:Number , required:true},
     start_date : {type:Date , required:true},
     end_date : {type:Date , required:true},
-    studentEnroll: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }],
+    studentEnroll: [{ type: String, ref: "Course" }],
     isfull : {type:Boolean , default:false},
     isdeleted: {type:Boolean , default:false}
 },

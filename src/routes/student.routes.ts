@@ -53,21 +53,6 @@ studentRoute.post("/" , parseDates ,validateInputData(studentschema), async (req
     }
 })
 
-// Get Student By id
-studentRoute.get("/:id",async (req:Request , res:Response , next:NextFunction)=>{
-    try{
-        const studentId = req.params.id;
-        const student =  await studentcontroller.GetStudentById(studentId);
-        res.json({
-            status : "success",
-            message : "Student has been found !",
-            data : student
-        })
-    }catch(error:unknown | any){
-        next(error);
-    }
-})
-
 // Update Student Info
 studentRoute.put("/:id",async (req:Request , res:Response , next:NextFunction)=>{
     try{
@@ -92,6 +77,69 @@ studentRoute.delete("/:id",async (req:Request , res:Response , next:NextFunction
         res.json({
             status : "success",
             message : "Student has been Delete!",
+        })
+    }catch(error:unknown | any){
+        next(error);
+    }
+})
+
+// register course for student
+studentRoute.post("/register/:studentId/course/:courseId" , async (req:Request ,res:Response , next:NextFunction)=>{
+    try{
+        const courseId = req.params.courseId;
+        const studentId = req.params.studentId;
+
+        const register = await studentcontroller.Registercourse(courseId , studentId);
+        res.json({
+            status : "success",
+            message : `${register.student} has been register course : ${register.course}`
+        })
+    }catch(error:unknown | any){
+        next(error);
+    }
+})
+
+// Remove course for Student
+studentRoute.post("/remove/:studentId/course/:courseId" , async (req:Request ,res:Response , next:NextFunction)=>{
+    try{
+        const courseId = req.params.courseId;
+        const studentId = req.params.studentId;
+
+        const register = await studentcontroller.RemoveCourse(courseId , studentId);
+        res.json({
+            status : "Remove success",
+            message : `${register.student} has been Remove course : ${register.course}`
+        })
+    }catch(error:unknown | any){
+        next(error);
+    }
+})
+
+// Get Course Report
+studentRoute.get("/report" ,async (req:Request , res:Response , next:NextFunction)=>{
+    try{
+        const reportData = await studentcontroller.GetStudentReport();
+        res.json({
+            status: "success",
+            message: "Here the Student Report",
+            AmountOfStudent : reportData.studentCount,
+            report:reportData.report
+        })
+    }catch(error:unknown | any){
+        next(error);
+    }
+})
+
+// Get Student By id
+studentRoute.get("/:id",async (req:Request , res:Response , next:NextFunction)=>{
+    try{
+        const studentId = req.params.id;
+        //console.log("hi from get by id");
+        const student =  await studentcontroller.GetStudentById(studentId);
+        res.json({
+            status : "success",
+            message : "Student has been found !",
+            data : student
         })
     }catch(error:unknown | any){
         next(error);

@@ -52,4 +52,31 @@ export class StudentService{
             throw error;
         }
     }
+
+    // Register course for student
+    async RegisterCourse(courseId:string ,  studentId:string){
+        try{
+            return await this.studentRepo.RegisterCourse(courseId , studentId);
+        }catch(error:unknown | any){
+            throw error;
+        }
+    }
+
+    // Remove course for student
+    async RemoveCourse(courseId:string ,  studentId:string){
+        try{
+            return await this.studentRepo.RemoveCourse(courseId , studentId);
+        }catch(error:unknown | any){
+            throw error;
+        }
+    }
+
+    // Get Report of Student
+    async getStudentReport(){
+        try{
+            return await this.studentRepo.GetStudentReport();
+        }catch(error:unknown | any){
+            throw error;
+        }
+    } 
 }

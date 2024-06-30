@@ -56,4 +56,31 @@ export class StudentController{
             throw error;
         }
     }
+
+    // Register Course for student
+    async Registercourse(courseId:string , studentId:string):Promise<any>{
+        try{
+            return await this.studentservice.RegisterCourse(courseId , studentId)
+        }catch(error:unknown | any){
+            throw error;
+        }
+    }
+
+    // remove Course for Student
+    async RemoveCourse(courseId:string , studentId:string):Promise<any>{
+        try{
+            return await this.studentservice.RemoveCourse(courseId , studentId)
+        }catch(error:unknown | any){
+            throw error;
+        }
+    }
+
+    // Get Course Report
+    async GetStudentReport():Promise<any>{
+        try{
+            return await this.studentservice.getStudentReport();
+        }catch(error:unknown | any){
+            throw error;
+        }
+    }
 }

@@ -7,7 +7,7 @@ const StudentSchema = new mongoose.Schema({
     gender: {type:String , enum:["Male","Female","Other"] , required:true},
     phonenumber: { type: String, required: true, unique: true },
     isdeleted: { type: Boolean, default: false },
-    courseEnrolled: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }],
+    courseEnrolled: [{ type: String, ref: "Course" }],
 },
 {
     toJSON: {

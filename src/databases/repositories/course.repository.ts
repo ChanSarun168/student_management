@@ -87,4 +87,28 @@ export class courseRepository {
       throw error;
     }
   }
+
+  // Get course Report
+    async GetCourseReport() {
+      try {
+        const courses = await CourseModel.find({ isdeleted: false }).lean();
+  
+        if (courses.length === 0) {
+          throw new BaseCustomError("No courses in our system", StatusCode.NoContent);
+        }
+  
+        const report = courses.map(course => ({
+          name: course.name,
+          professor_name: course.professor_name,
+          start_date: course.start_date,
+          end_date: course.end_date,
+          limit_student: course.limit_student,
+          registered_students: course.studentEnroll.length,
+        }));
+  
+        return report;
+      } catch (error: unknown | any) {
+        throw error;
+      }
+    }
 }
